@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판</title>
 </head>
 <body>
-	<jsp:include page="views/common/header.jsp"></jsp:include>
-	<jsp:include page="views/common/nav.jsp"></jsp:include>
+	<jsp:include page="views/common/header.jsp"/>
+	<jsp:include page="views/common/nav.jsp"/>
 	
 	<h1>게시글 관리 플랫폼 ver 1.0</h1><br><br><br><br>
-	<jsp:include page="views/common/footer.jsp"></jsp:include>
+	<jsp:include page="views/common/footer.jsp"/>
 </body>
 </html>

@@ -3,7 +3,6 @@ package com.dto;
 import java.io.Serializable;
 import java.sql.Date;
 
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
 
 public class BoardDTO implements Serializable{
 	
