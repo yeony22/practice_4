@@ -41,7 +41,7 @@ public class BoardInsert extends HttpServlet {
 		
 		BoardDTO bDTO = new BoardDTO();
 		
-		bDTO.setCano(cano);
+		bDTO.setCaNo(cano);
 		bDTO.setBoardTitle(boardTitle);
 		bDTO.setBoardWriter(boardWriter);
 		bDTO.setBoardPwd(boardPwd);

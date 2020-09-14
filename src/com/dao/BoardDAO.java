@@ -13,25 +13,27 @@ import java.util.Properties;
 import com.dto.BoardDTO;
 import com.dto.CategoryDTO;
 
+
 public class BoardDAO {
 	private Properties prop;
-
+	
 	public BoardDAO() {
 		prop = new Properties();
-
-		String filePath = BoardDAO.class.getResource("/config/board-query.properties").getPath();
 		
+		String filePath = BoardDAO.class.getResource("../config/board-query.properties").getPath();
+	
 		try {
 			prop.load(new FileReader(filePath));
-
+		
 		} catch(FileNotFoundException e) {
 			e.printStackTrace();
 			
 		} catch(IOException e) {
 			e.printStackTrace();
+			
 		}
 	}
-	
+
 	public int insertBoard(Connection con, BoardDTO bDTO) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -41,7 +43,7 @@ public class BoardDAO {
 		try {
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, bDTO.getCano());
+			pstmt.setInt(1, bDTO.getCaNo());
 			pstmt.setString(2, bDTO.getBoardTitle());
 			pstmt.setString(3, bDTO.getBoardWriter());
 			pstmt.setString(4, bDTO.getBoardPwd());
@@ -91,6 +93,66 @@ public class BoardDAO {
 		}
 		return list;
 	}
+	
+	
+	public int updateBoard(Connection con, BoardDTO bDTO) {
+		int result = 0;
+		PreparedStatement pstmt = null;
 		
+		String sql = prop.getProperty("updateBoard");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, bDTO.getCaNo());
+			pstmt.setString(2,  bDTO.getBoardTitle());
+			pstmt.setString(3, bDTO.getBoardWriter());
+			pstmt.setString(4, bDTO.getBoardPwd());
+			pstmt.setString(5,  bDTO.getBoardContent());
+			pstmt.setInt(6,  bDTO.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+		
+		} catch(SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				pstmt.close();
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+				
+			}
+		}
+		return result;
+	}
+	
+	public int DeleteBoard(Connection con, int boardNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteBoard");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				pstmt.close();
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}		
 }
 
