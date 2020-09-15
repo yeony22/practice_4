@@ -3,15 +3,17 @@ package com.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+
 import com.common.JDBCTemplate;
 import com.dao.BoardDAO;
 import com.dto.BoardDTO;
+import com.dto.CategoryDTO;
 
 public class BoardService {
 	private BoardDAO bDAO = new BoardDAO();
-	
+
 	public int insertBoard(BoardDTO bDTO) {
-		Connection con = getConnection();
+		Connection con = JDBCTemplate.getConnection()
 		
 		int result = bDAO.insertBoard(con, bDTO);
 		
@@ -28,7 +30,8 @@ public class BoardService {
 	}
 
 	public ArrayList<CategoryDTO> selectCategoryList() {
-		Connection con = getConnection();
+		Connection con = JDBCTemplate.getConnection()
+
 
 		ArrayList<CategoryDTO> list = bDAO.selectCategoryList(con);
 		

@@ -13,7 +13,6 @@ import java.util.Properties;
 import com.dto.BoardDTO;
 import com.dto.CategoryDTO;
 
-
 public class BoardDAO {
 	private Properties prop;
 	
@@ -54,6 +53,15 @@ public class BoardDAO {
 		}catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
+
+		} finally {
+			try {
+				pstmt.close();
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+				
+			}
 		}
 		return result;
 	}
