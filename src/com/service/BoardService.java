@@ -83,4 +83,18 @@ public class BoardService {
 		}
 		return result;		
 	}
+
+	public ArrayList<BoardDTO> selectBoardList() {
+		Connection con = JDBCTemplate.getConnection();
+		
+		ArrayList<BoardDTO> list = bDAO.selectBoardList(con);
+		
+		try {
+			con.close();
+		}catch (Exception e) {
+			e.printStackTrace();// TODO: handle exception
+		}
+		
+		return list;
+	}
 }

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="java.util.*, com.dto.*;" %>
+    <%@ page import="java.util.*, com.dto.*" %>
  <%
     ArrayList<CategoryDTO> list = (ArrayList<CategoryDTO>)request.getAttribute("list");
      %>
@@ -16,7 +16,7 @@
 	
 	<h1>게시글 등록 화면</h1>
 	<form action="${pageContext.request.contextPath }/boardInsert.do" method="post">
-		<table style="margin-left: 10px;">
+		<table style="margin-left: 10px;"  boarder="1">
 			<tr>
 				<td>글 제목</td>
 				<td colspan="3">

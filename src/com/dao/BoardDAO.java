@@ -45,8 +45,8 @@ public class BoardDAO {
 			pstmt.setInt(1, bDTO.getCaNo());
 			pstmt.setString(2, bDTO.getBoardTitle());
 			pstmt.setString(3, bDTO.getBoardWriter());
-			pstmt.setString(4, bDTO.getBoardPwd());
-			pstmt.setString(5, bDTO.getBoardContent());
+			pstmt.setString(4, bDTO.getBoardContent());
+			pstmt.setString(5, bDTO.getBoardPwd());
 			
 			result = pstmt.executeUpdate();
 			
@@ -161,6 +161,49 @@ public class BoardDAO {
 			}
 		}
 		return result;
+	}
+
+	public ArrayList<BoardDTO> selectBoardList(Connection con) {
+		ArrayList<BoardDTO> list = new ArrayList<>();
+		PreparedStatement pstmt= null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectBoardList");
+		
+		try {
+pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				BoardDTO bDTO = new BoardDTO();
+				
+				bDTO.setBoardNo(rs.getInt("BOARDNO"));
+				bDTO.setCaNo(rs.getInt("CANO"));
+				bDTO.setCaName(rs.getString("CANAME"));
+				bDTO.setBoardTitle(rs.getString("BOARDTITLE"));
+				bDTO.setBoardWriter(rs.getString("BOARDWRITER"));
+				bDTO.setBoardContent(rs.getString("BOARDCONTENT"));
+				bDTO.setBoardDate(rs.getDate("BOARDDATE"));
+				bDTO.setReadCount(rs.getInt("READCOUNT"));
+				bDTO.setBoardPwd(rs.getString("BOARDPWD"));
+				
+				list.add(bDTO);
+			}
+		}catch (SQLException e) {
+				e.printStackTrace();
+				// TODO: handle exception
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				// TODO: handle exception
+			}
+		}
+
+		return list;
 	}		
 }
 
