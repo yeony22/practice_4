@@ -1,29 +1,25 @@
 package com.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dto.CategoryDTO;
 import com.service.BoardService;
 
 /**
- * Servlet implementation class BoardInsertForm
+ * Servlet implementation class BoardDeleete
  */
-// 게시물 형태를 등록
-@WebServlet("/boardInsertForm.do")
-public class BoardInsertForm extends HttpServlet {
+@WebServlet("/deleteBoard.do")
+public class BoardDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardInsertForm() {
+    public BoardDelete() {
         super();
     }
 
@@ -31,15 +27,19 @@ public class BoardInsertForm extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<CategoryDTO> list = null;
+		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		
-		BoardService bs = new BoardService();
-		list = bs.selectCategoryList();	//	list에 선택한 카테고리 리스트를 통해 받아온 데이터를 저장
+		BoardService bService = new BoardService();
 		
-		request.setAttribute("list", list);
+		int result = bService.deleteBoard(boardNo);
 		
-		request.getRequestDispatcher("views/board/insertBoard.jsp").forward(request, response);
-		
+		if(result > 0) {
+			System.out.println("데이터 삭제 성공");
+			response.sendRedirect("index.jsp");
+			//TODO boardList.do 로  변경
+		}
+		else
+			System.out.println("테이터 삭제 실패");
 	}
 
 	/**

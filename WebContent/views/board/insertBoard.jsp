@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="java.util.*, com.dto.*;" %>
+<%@ page import="java.util.*, com.dto.*" %>
  <%
     ArrayList<CategoryDTO> list = (ArrayList<CategoryDTO>)request.getAttribute("list");
      %>

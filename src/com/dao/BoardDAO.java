@@ -51,7 +51,6 @@ public class BoardDAO {
 			result = pstmt.executeUpdate();
 			
 		}catch (SQLException e) {
-			// TODO: handle exception
 			e.printStackTrace();
 
 		} finally {
@@ -88,14 +87,12 @@ public class BoardDAO {
 			}
 		}catch (SQLException e) {
 				e.printStackTrace();
-				// TODO: handle exception
 		} finally {
 			try {
 				rs.close();
 				pstmt.close();
 			} catch (Exception e) {
 				e.printStackTrace();
-				// TODO: handle exception
 			}
 					
 		}

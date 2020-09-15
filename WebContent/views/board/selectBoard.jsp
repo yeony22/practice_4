@@ -11,7 +11,7 @@
 		<table>
 			<tr>
 				<td>글 번호 : </td>
-				<td><input type="text" id="cano"></td>
+				<td><input type="text" id="caNo"></td>
 			</tr>
 		</table>
 		<button type="submit">조회</button>

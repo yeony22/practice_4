@@ -24,8 +24,7 @@ public class BoardService {
 				con.rollback(); // 없음 되돌리기
 		} catch (Exception e) {
 			e.printStackTrace();
-			// TODO: handle exception
-		}
+					}
 		return result;
 	}
 
@@ -38,7 +37,7 @@ public class BoardService {
 		try {
 			con.close();
 		} catch (Exception e) {
-			e.printStackTrace();// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		return list;
