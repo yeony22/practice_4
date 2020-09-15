@@ -13,7 +13,7 @@ public class BoardService {
 	private BoardDAO bDAO = new BoardDAO();
 
 	public int insertBoard(BoardDTO bDTO) {
-		Connection con = JDBCTemplate.getConnection()
+		Connection con = JDBCTemplate.getConnection();
 		
 		int result = bDAO.insertBoard(con, bDTO);
 		
@@ -30,7 +30,7 @@ public class BoardService {
 	}
 
 	public ArrayList<CategoryDTO> selectCategoryList() {
-		Connection con = JDBCTemplate.getConnection()
+		Connection con = JDBCTemplate.getConnection();
 
 
 		ArrayList<CategoryDTO> list = bDAO.selectCategoryList(con);

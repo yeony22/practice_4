@@ -31,7 +31,7 @@ public class BoardInsert extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int cano = Integer.parseInt(request.getParameter("cano"));
+		int caNo = Integer.parseInt(request.getParameter("caNo"));
 		String boardTitle = request.getParameter("boardTitle");
 		String boardWriter = request.getParameter("boardWriter");
 		String boardPwd = request.getParameter("boardPwd");
@@ -41,7 +41,7 @@ public class BoardInsert extends HttpServlet {
 		
 		BoardDTO bDTO = new BoardDTO();
 		
-		bDTO.setCaNo(cano);
+		bDTO.setCaNo(caNo);
 		bDTO.setBoardTitle(boardTitle);
 		bDTO.setBoardWriter(boardWriter);
 		bDTO.setBoardPwd(boardPwd);

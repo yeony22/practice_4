@@ -3,25 +3,25 @@ package com.dto;
 import java.io.Serializable;
 
 public class CategoryDTO implements Serializable{
-	private int cano;
+	private int caNo;
 	private String caName;
 	
 	public CategoryDTO() {
 		super();
 	}
 	
-	public CategoryDTO(int cano, String caName) {
+	public CategoryDTO(int caNo, String caName) {
 		super();
-		cano = this.cano;
+		caNo = this.caNo;
 		caName = this.caName;
 	}
 
 	public int getCano() {
-		return cano;
+		return caNo;
 	}
 
-	public void setCano(int cano) {
-		this.cano = cano;
+	public void setCano(int caNo) {
+		this.caNo = caNo;
 	}
 
 	public String getCaName() {

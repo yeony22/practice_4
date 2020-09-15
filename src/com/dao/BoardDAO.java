@@ -19,7 +19,7 @@ public class BoardDAO {
 	public BoardDAO() {
 		prop = new Properties();
 		
-		String filePath = BoardDAO.class.getResource("../config/board-query.properties").getPath();
+		String filePath = BoardDAO.class.getResource("/config/board-query.properties").getPath();
 	
 		try {
 			prop.load(new FileReader(filePath));
