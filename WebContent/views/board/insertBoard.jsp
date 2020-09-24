@@ -18,7 +18,7 @@
 	<form action="${pageContext.request.contextPath }/boardInsert.do" method="post">
 		<table style="margin-left: 10px;"  boarder="1">
 			<tr>
-				<td>글 제목</td>
+				<th>글 제목</th>
 				<td colspan="3">
 					<select name="caNo">
 						<% for(CategoryDTO c : list) { %>
@@ -29,13 +29,16 @@
 					</select>
 				<input type="text" name="boardTitle" id="boardTitle" required />
 				</td>
-				
-				<td>작성자</td>
+			</tr>
+			<tr>	
+				<th>작성자</th>
 				<td><input type="text" name="boardWriter" id="boardWriter" required /></td>
-				<td>비밀번호</td>
+			
+				<th>비밀번호</th>
 				<td><input type="password" name="boardPwd" /></td>
-				
-				<td>내용</td>
+			</tr>	
+			<tr>
+				<th>내용</th>
 				<td colspan="3"><textarea name="boardContent"></textarea></td>
 			</tr>
 		</table>
