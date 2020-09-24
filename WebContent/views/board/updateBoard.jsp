@@ -10,7 +10,7 @@
 	<jsp:include page="../common/header.jsp"/>
 	<jsp:include page="../common/nav.jsp"/>
 	
-	<form action="${pageContext.request.contextPath}/updateBoard.do">
+	<form action="${pageContext.request.contextPath}/updateBoardEnd.do">
 		<table border="1">
 			<tr>
 				<td>글 제목</td>

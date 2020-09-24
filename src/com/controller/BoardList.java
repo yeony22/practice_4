@@ -24,28 +24,24 @@ public class BoardList extends HttpServlet {
      */
     public BoardList() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		BoardService bs = new BoardService();
 		ArrayList<BoardDTO> list = bs.selectBoardList();
 		
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("views/board/boardList.jsp").forward(request, response);
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

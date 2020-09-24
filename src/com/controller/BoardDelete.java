@@ -35,8 +35,7 @@ public class BoardDelete extends HttpServlet {
 		
 		if(result > 0) {
 			System.out.println("데이터 삭제 성공");
-			response.sendRedirect("index.jsp");
-			//TODO boardList.do 로  변경
+			response.sendRedirect("boardList.do");
 		}
 		else
 			System.out.println("테이터 삭제 실패");

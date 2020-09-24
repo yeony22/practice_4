@@ -1,8 +1,6 @@
 package com.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,20 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dto.BoardDTO;
-import com.dto.CategoryDTO;
 import com.service.BoardService;
 
 /**
- * Servlet implementation class BoardUpdate
+ * Servlet implementation class BoardSelectOne
  */
-@WebServlet("/updateBoard.do")
-public class BoardUpdate extends HttpServlet {
+@WebServlet("/boardSelectOne.do")
+public class BoardSelectOne extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardUpdate() {
+    public BoardSelectOne() {
         super();
     }
 
@@ -34,13 +31,12 @@ public class BoardUpdate extends HttpServlet {
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		
 		BoardService bService = new BoardService();
-		BoardDTO bDTO = bService.updateBoardVie1w(boardNo);
-		ArrayList<CategoryDTO> list = bService.selectCategoryList();
 		
-		request.setAttribute("board", bDTO);
-		request.setAttribute("lust", list);
+		BoardDTO bDTO = bService.SelectBoardOne(boardNo);
 		
-		request.getRequestDispatcher("views/board/boradUpdate.jsp").forward(request, response);		
+		request.setAttribute("boardDTO", bDTO);
+		
+		request.getRequestDispatcher("views/board/boardDetail.jsp").forward(request, response);
 	}
 
 	/**

@@ -31,6 +31,13 @@ public class BoardDTO implements Serializable{
 		this.readCount = readCount;
 		this.boardPwd = boardPwd;
 	}
+	
+	@Override
+	public String toString() {
+		return "Board [boardNo=" + boardNo + ", cano=" + caNo + ", caName=" + caName + ", boardTitle=" + boardTitle
+				+ ", boardWriter=" + boardWriter + ", boardContent=" + boardContent + ", boardDate=" + boardDate
+				+ ", readCount=" + readCount + ", boardPwd=" + boardPwd + "]";
+	}
 
 	public int getBoardNo() {
 		return boardNo;

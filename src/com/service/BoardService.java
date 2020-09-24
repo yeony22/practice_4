@@ -43,6 +43,58 @@ public class BoardService {
 		return list;
 	}
 	
+	public ArrayList<BoardDTO> selectBoardList() {
+		Connection con = JDBCTemplate.getConnection();
+		
+		ArrayList<BoardDTO> list = bDAO.selectBoardList(con);
+		
+		try {
+			con.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	public BoardDTO SelectBoardOne(int boardNo) {
+		Connection con = JDBCTemplate.getConnection();
+		BoardDTO bDTO = null;
+		bDTO = bDAO.selectBoardOne(con, boardNo);
+		
+		try {
+			con.close();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return bDTO;
+	}
+	
+	public BoardDTO updateBoardView(int boardNo) {
+		Connection con = JDBCTemplate.getConnection();
+		int result = bDAO.updateReadCount(con, boardNo);
+		BoardDTO bDTO = null;
+		
+		try {
+			if(result > 0) {
+				con.commit();
+				bDTO = bDAO.selectBoardOne(con, boardNo);
+			}
+			else 
+				con.rollback();
+			
+			con.close();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			
+		}
+		return bDTO;
+	}
+	
 	public int updateBoard(BoardDTO bDTO) {
 		Connection con = JDBCTemplate.getConnection();
 		
@@ -66,7 +118,7 @@ public class BoardService {
 	public int deleteBoard(int boardNo) {
 		Connection con = JDBCTemplate.getConnection();
 		
-		int result = bDAO.DeleteBoard(con, boardNo);
+		int result = bDAO.deleteBoard(con, boardNo);
 		
 		try {
 			if(result > 0)
@@ -83,17 +135,5 @@ public class BoardService {
 		return result;		
 	}
 
-	public ArrayList<BoardDTO> selectBoardList() {
-		Connection con = JDBCTemplate.getConnection();
-		
-		ArrayList<BoardDTO> list = bDAO.selectBoardList(con);
-		
-		try {
-			con.close();
-		}catch (Exception e) {
-			e.printStackTrace();// TODO: handle exception
-		}
-		
-		return list;
-	}
+	
 }

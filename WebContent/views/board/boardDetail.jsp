@@ -19,12 +19,11 @@ h1 {
 	<jsp:include page="../common/header.jsp" />
 	<jsp:include page="../common/nav.jsp" />
 	<h1>게시글 상세 조회</h1>
-	<form action="${pageContext.request.contextPath}/updateBoard.do">
+	<form>
 		<table border="1">
 			<tr>
 				<td>글 제목</td>
 				<td colspan="3">
-					<%= "[" + bDTO.getCaName() + "]" %> + <%= bDTO.getBoardTitle() %>
 				</td>
 			</tr>
 			<tr>
@@ -39,13 +38,14 @@ h1 {
 			</tr>
 			<tr>
 				<td>내용</td>
-				<td colspan="3"></td>
+				<td colspan="3">
+				</td>
 			</tr>
 		</table>
-
-		<button type="submit">수정</button>
-		<button type="button" onclick="Location.href='${pageContext.request.contextPath}/boardList.do';">조회</button>
+		<button type="button" onclick="location.href='${pageContext.request.contextPath }/updateBoard.do';">수 정</button>
+		<button type="button" onclick="location.href='${pageContext.request.contextPath }/boardList.do';">조 회</button>
 	</form>
+
 
 	<jsp:include page="../common/footer.jsp" />
 </body>
