@@ -39,6 +39,7 @@ h1 {
 			<tr>
 				<td>내용</td>
 				<td colspan="3">
+				<%= bDTO.getBoardContent() %>
 				</td>
 			</tr>
 		</table>
