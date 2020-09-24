@@ -34,7 +34,7 @@ public class BoardUpdate extends HttpServlet {
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		
 		BoardService bService = new BoardService();
-		BoardDTO bDTO = bService.updateBoardVie1w(boardNo);
+		BoardDTO bDTO = bService.updateBoardView(boardNo);
 		ArrayList<CategoryDTO> list = bService.selectCategoryList();
 		
 		request.setAttribute("board", bDTO);

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, com.dto.*" %>
 <%
-	BoardDTO bDTO = (BoardDTO)request.getAttribute("board");
+	BoardDTO bDTO = (BoardDTO)request.getAttribute("boardDTO");
 %>
 <!DOCTYPE html>
 <html>
